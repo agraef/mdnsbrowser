@@ -34,6 +34,12 @@ The arguments are all optional, but if any are specified, you need to give at le
 
 Note that mdsnbrowser only helps you advertise OSC endpoints and discover them in your local network, it does *not* implement the actual transport of OSC messages from/to your mobile devices. You'll still have to use either Pd's built-in facilities or the mrpeach externals to do that. The included help patch shows how this can be implemented using the mrpeach externals.
 
+The package also includes two useful abstractions named oscbrowser.pd and osclisten.pd which help with establishing OSC connections. oscbrowser.pd implements a list store for discovered services which makes it easy to choose other OSC services on the local network. osclisten.pd listens to OSC data on port 8000, detects where the data came from and connects back to the data source. These provide two different ways to establish bidirectional communication. You can see how these are used by studying the provided help patch.
+
+To get TouchOSC hooked up to Pd, it's generally sufficient to activate the `publish` checkbox in the help patch, and then select the corresponding service in TouchOSC's OSC configuration. Once the connection from TouchOSC has been established, press the bang control above the osclisten object and operate any of the controls in your TouchOSC layout to make Pd connect back to the TouchOSC instance. I suggest to use TouchOSC's Mix2 layout for this purpose. The two sliders in the help patch are both mapped to the `/1/fader1` control which is the left fader on the first page in the Mix2 layout. One of the sliders in the help patch will show movements of the fader in TouchOSC, while the other can be used to control the TouchOSC fader from Pd.
+
+This should hopefully be enough to get you started. Note that the help patch doesn't do any real processing of received OSC messages. It only provides a simple example from where you can start adding messages and the actual control and audio processing that you want to perform.
+
 ## Feedback and Bug Reports
 
 As usual, bug reports, patches, feature requests, other comments and source contributions are more than welcome. Just drop me an email, file an issue or send me a pull request on mdnsbrowser's GitHub page.
