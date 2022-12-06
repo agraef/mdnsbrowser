@@ -1,0 +1,82 @@
+#N canvas 554 262 627 432 12;
+#X obj 30 60 osclisten;
+#X obj 180 300 udpsend;
+#X obj 180 329 tgl 15 0 empty empty connected 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 30 103 unpackOSC;
+#X obj 180 30 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X msg 180 54 /1/fader1 \$1;
+#X obj 180 83 packOSC;
+#X obj 30 130 routeOSC /1/fader1;
+#X obj 30 157 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 30 240 spigot;
+#X obj 30 269 print osc;
+#X obj 69 214 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 30 30 bng 15 250 50 0 empty empty listen 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 525 191 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#N canvas 1040 367 450 394 connect 0;
+#X msg 40 260 disconnect;
+#X obj 40 110 unpack s f;
+#X symbolatom 40 170 16 0 0 0 - - -, f 16;
+#X floatatom 170 169 5 0 0 0 - - -, f 5;
+#X msg 40 230 connect \$1 \$2;
+#X obj 40 197 pack s f;
+#X obj 100 80 t b b;
+#X obj 40 10 inlet;
+#X obj 40 330 outlet;
+#X obj 190 150 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 262 116 set 1;
+#X obj 230 170 sel 1 0;
+#X obj 40 80 t a b b;
+#X connect 0 0 8 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 1;
+#X connect 4 0 8 0;
+#X connect 5 0 4 0;
+#X connect 6 0 2 0;
+#X connect 6 1 3 0;
+#X connect 7 0 12 0;
+#X connect 9 0 11 0;
+#X connect 10 0 9 0;
+#X connect 11 0 6 0;
+#X connect 11 1 0 0;
+#X connect 12 0 1 0;
+#X connect 12 1 10 0;
+#X connect 12 2 0 0;
+#X coords 0 -1 1 1 175 47 1 37 147;
+#X restore 180 180 pd connect;
+#X obj 525 85 tgl 15 0 empty empty publish 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 333 34 Android (TouchOSC);
+#X obj 389 85 tgl 15 0 empty empty browse 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 329 81 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc
+#000000 #000000;
+#X obj 389 114 oscbrowser;
+#X connect 0 0 3 0;
+#X connect 0 1 14 0;
+#X connect 1 0 2 0;
+#X connect 3 0 7 0;
+#X connect 3 0 9 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 1 0;
+#X connect 7 0 8 0;
+#X connect 9 0 10 0;
+#X connect 11 0 9 1;
+#X connect 12 0 0 0;
+#X connect 14 0 1 0;
+#X connect 15 0 19 1;
+#X connect 16 0 19 0;
+#X connect 17 0 19 0;
+#X connect 18 0 19 0;
+#X connect 19 0 14 0;
+#X connect 19 1 13 0;
